@@ -1,0 +1,10 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="tabeldatainf">
+    <insert id = "tambahUser" parameterType = "com.example.ProjectTicketing.Model.User">
+        INSERT INTO customers (nama, alamat, id_kota, pendapatan) VALUES (#{nama}, #{alamat}, #{id_kota}, #{pendapatan});
+    </insert>
+
+</mapper>
