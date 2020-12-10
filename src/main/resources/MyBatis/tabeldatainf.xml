@@ -7,4 +7,14 @@
         INSERT INTO customers (nama, alamat, id_kota, pendapatan) VALUES (#{nama}, #{alamat}, #{id_kota}, #{pendapatan});
     </insert>
 
+    <!--Mengubah record user berdasarkan id-->
+    <update id = "editUser" parameterType = "com.example.ProjectTicketing.Model.User">
+        UPDATE user SET nama = #{nama}, alamat = #{alamat}, id_kota = #{id_kota}, pendapatan = #{pendapatan} WHERE cust_id = #{cust_id};
+    </update>
+
+    <!--Menghapus record berdasarkan id    -->
+    <delete id = "deleteUser" parameterType = "long">
+        DELETE FROM user WHERE cust_id = #{cust_id};
+    </delete>
+
 </mapper>

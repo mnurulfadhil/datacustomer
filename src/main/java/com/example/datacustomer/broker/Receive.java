@@ -39,10 +39,10 @@ public class Receive {
         switch (aksi) {                                              //Mengakses database sesuai dengan
             case "tambahuser":
                 return service.tambahUser(dataString);
-//            case "edituser":
-//                return service.editUser(dataString);
-//            case "deleteuser":
-//                return service.deleteUser(dataString);
+            case "edituser":
+                return service.editUser(dataString);
+            case "deleteuser":
+                return service.deleteUser(dataString);
             default:return "aksi salah";
         }
     }

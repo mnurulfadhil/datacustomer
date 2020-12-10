@@ -44,4 +44,51 @@ public class MyBatisService {
             return "Failed...";
         }
     }
+    public String editUser(String userString){                                  //Method edit user
+        System.out.println("Memulai edit user.....");
+        User user = new Gson().fromJson(userString, User.class);                //Konversi JsonString ke Object
+
+        int hasil = 0;
+        try {
+            connectMyBatis();                                                   //Memulai koneksi MyBatis
+            hasil = session.update("tabledatainf.editUser", user);           //Membuat proses edit user
+        }catch (Exception e){
+            System.out.println("Error edit user = " + e);
+        }
+
+        if (hasil != 0){
+            session.commit();                                                   //Query akan dicommit jika
+            session.close();                                                    //hasil = 1
+            System.out.println("Berhasil edit user....");
+            return "Edit 'User : " + user.getNama() + "' berhasil...";
+        } else {
+            session.close();
+            System.out.println("Gagal edit user....");
+            return "Edit user gagal";
+        }
+    }
+
+    public String deleteUser(String userString){                                //Method delete user
+        System.out.println("Deleting.....");
+        long id_user = Long.parseLong(userString);                              //Konversi String ke long
+
+        int hasil = 0;
+        try {
+            connectMyBatis();                                                   //Memulai koneksi MyBatis
+            hasil = session.delete("tabeldatainf.deleteUser", id_user);       //Membuat proses delete user
+        }catch (Exception e){
+            System.out.println("Error delete user = " + e);
+        }
+
+        if (hasil != 0){
+            session.commit();                                                   //Query akan dicommit jika
+            session.close();                                                    //hasil = 1
+            System.out.println("Berhasil delete user....");
+            return "Delete user berhasil...";
+        } else {
+            session.close();
+            System.out.println("Gagal Delete user....");
+            return "Delete user gagal";
+        }
+    }
 }
